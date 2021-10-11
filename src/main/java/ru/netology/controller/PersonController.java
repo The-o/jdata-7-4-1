@@ -21,4 +21,14 @@ public class PersonController {
         return service.getPersonsByCity(city);
     }
 
+    @GetMapping("/persons/by-age")
+    public List<Person> getPersonsByCity(@RequestParam int age) {
+        return service.getPersonsYoungerThan(age);
+    }
+
+    @GetMapping("/persons/by-name")
+    public Person getPersonsName(@RequestParam String name, @RequestParam String surname) {
+        return service.getPersonByNameAndSurname(name, surname).orElse(null);
+    }
+
 }
