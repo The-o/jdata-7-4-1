@@ -1,6 +1,7 @@
 package ru.netology.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,14 @@ public class PersonService {
     private PersonRepository repository;
 
     public List<Person> getPersonsByCity(String city) {
-        return repository.getPersonsByCity(city);
+        return repository.findByCityIgnoreCase(city);
     }
 
+    public List<Person> getPersonsYoungerThan(int age) {
+        return repository.findByAgeLessThanOrderByAge(age);
+    }
+
+    public Optional<Person> getPersonByNameAndSurname(String name, String surname) {
+        return repository.findByNameAndSurname(name, surname);
+    }
 }
