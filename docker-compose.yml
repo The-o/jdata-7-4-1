@@ -1,0 +1,10 @@
+version: "3.7"
+
+services:
+  postgres:
+    container_name: jdata-7-4-1-postgres
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: 12345
+    ports:
+      - 5432:5432
